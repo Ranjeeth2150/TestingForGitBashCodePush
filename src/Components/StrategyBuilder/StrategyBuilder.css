@@ -1,0 +1,24 @@
+
+ .p-button.p-component.p-button-primary.smallButton
+{
+  width: 70px !important;
+  font-size: 14px;
+  height: 25px;
+}
+.flex-in-tab {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    /* display: flex; */
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+ .left-side-part {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* padding: 20px 20px 10px; */
+    border-bottom: solid 1px #eaeaea;
+    width: 100%;
+  }

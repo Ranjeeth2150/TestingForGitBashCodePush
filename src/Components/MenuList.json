@@ -1,0 +1,497 @@
+{
+  "main-menu": 
+  {
+    "class": "sm sm-blue",
+    "items": 
+	[
+      {
+        "label": "Home",
+		"id":"Home",
+        "url": "/opt/index.php"
+      },
+      {
+        "label": "Futures",
+		 "id": "Futures",
+		"url": "#",
+        "sub-menu": [ 
+          
+		   {
+            "label": "FnO Charts (Beta) (TradingView)",
+            "url": "/opt/FnOCharts_Beta.php",
+			"img": "/opt/images/beta_icon_green_v2.png"
+          },
+          {
+            "label": "Symbol Dashboard",
+            "url": "/opt/SymbolDashboard.php",
+			"img": "/opt/images/newicon.png"
+            
+          },
+          {
+            "label": "Futures Chart",
+            "url": "/opt/FuturesChart.php"
+          },
+          {
+            "label": "OI Buildup",
+            "url": "/opt/FuturesOIBuildup.php"
+          },
+          {
+            "label": "OI Scan",
+            "url": "/opt/FuturesOIScan.php"
+          },
+		  {
+            "label": "Scrips In Uptrend / Downtrend",
+            "url": "/opt/ScripsInUptrendDowntrend.php",
+			"img": "/opt/images/newicon.png"
+          },
+          {
+            "label": "OI Breakup",
+            "url": "/opt/FuturesOIBreakup.php"
+          },
+          {
+            "label": "Open-High / Open-Low",
+            "url": "/opt/OpenHighLowScan.php"
+          },
+          {
+            "label": "Daywise Price & OI Summary",
+            "url": "/opt/DaywiseSummary.php"
+          },
+          {
+            "label": "Daywise Price & OI Details",
+            "url": "/opt/DaywiseDetails.php"
+          },
+          {
+            "label": "Volume / OI / OI Chg Spikes",
+            "url": "/opt/VolumeAndOISpikesScan.php"
+          },
+          {
+            "label": "Heatmap",
+            "url": "/opt/Heatmap.php"
+          },
+          {
+            "label": "Futures Rollover",
+            "url": "/opt/FuturesRollover.php"
+          },
+          {
+            "label": "Participant Wise OI Dashboard",
+            "url": "/opt/ParticipantsWiseOIDashboard.php",
+            "img": "/opt/images/newicon.png"
+          },
+          {
+            "label": "Participant Wise OI Trends",
+            "url": "/opt/ParticipantWiseOITrends.php"
+          },
+		  {
+            "label": "Sector Summary - New",
+            "url": "/opt/SectorSummary.php",
+			 "img": "/opt/images/newicon.png"
+          },
+		  {
+            "label": "Support/Resistance Scan - New",
+            "url": "/opt/SupportResistanceScan.php",
+			 "img": "/opt/images/newicon.png"
+          }
+        ]
+      },
+      {
+        "label": "Options",
+		"id": "Options",
+		"url": "#",
+		
+        "sub-menu": [
+         
+         
+		   {
+            "label": "FnO Charts (Beta) (TradingView)",
+            "url": "/opt/FnOCharts_Beta.php",
+			"img": "/opt/images/beta_icon_green_v2.png"
+          },
+          {
+            "label": "Options Chart",
+            "url": "/opt/OptionsChart.php"
+          },
+          {
+            "label": "Options Chain",
+            "url": "/opt/OptionChain.php"
+          },
+		  {
+            "label": "Option Chain - New",
+            "url": "/opt/OptionChain_Beta.php",
+			"img": "/opt/images/newicon.png"
+          },
+          {
+            "label": "Option Chain - Min-by-Min - New",
+            "url": "/opt/OptionChain_Beta_MinuteWise.php",
+			"img": "/opt/images/newicon.png"
+            
+          },
+          {
+            "label": "Open-High / Open-Low",
+            "url": "/opt/OpenHighLowScanOptions.php"
+          },
+          {
+            "label": "OI Stats",
+            "url": "/opt/OptionOIStats.php"
+          },
+		  {
+            "label": "Option OI Stats - New",
+            "url": "/opt/OptionOIStatsBeta.php",
+			"img": "/opt/images/newicon.png"
+          },
+          
+          {
+            "label": "Option Snapshot",
+            "url": "/opt/OptionSnapshot.php"
+          },
+          {
+            "label": "Options OI Breakup",
+            "url": "/opt/OptionsOIBreakup.php"
+          },
+          {
+            "label": "Price vs OI",
+            "url": "/opt/PriceVsOI.php"
+          },
+          {
+            "label": "Multi Strike OI",
+            "url": "/opt/MultiStrikeOI.php"
+          },
+          {
+            "label": "Premium Decay (Beta)",
+            "url": "/opt/PremiumDecay.php",
+			"img": "/opt/images/newicon.png"
+            
+          },
+          {
+            "label": "Cumulative OI Change",
+            "url": "/opt/CumulativeOIChange.php"
+          },
+          {
+            "label": "Total PE-CE OI Diff",
+            "url": "/opt/TotalPECEOIDiff.php"
+          },
+		  {
+            "label": "Total PE-CE OI Diff - New", 
+            "url": "/opt/TotalPECEOIDiff_Beta.php",
+			"img": "/opt/images/newicon.png"
+          },
+		  {
+            "label": "Multi Strike PCR - New",
+            "url": "/opt/MultiStrikePCR.php",
+			"img": "/opt/images/newicon.png"
+          },
+		  
+          {
+            "label": "Max Pain",
+            "url": "/opt/MaxPain.php"
+          },
+		  {
+			"label": "IV Tools",
+			"id": "ivTools",
+			"url": "#",
+			"sub-menu": [
+				{
+					"label": "Volatility Skew",
+					"url": "/opt/VolatilitySkew.php"
+				},
+				{
+					"label": "IV Chart",
+					"url": "/opt/iv.php"
+				},
+				{
+					"label": "IV-HV Chart",
+					"url": "/opt/iv_hv.php"
+				},
+				{
+					"label": "IVR-IVP Chart",
+					"url": "/opt/ivr.php"
+				},
+				{
+					"label": "IVR-IVP Scan",
+					"url": "/opt/IVR-IVP-Scan.php"
+				}
+			]
+		  }
+        ]
+      },
+      {
+        "label": "Strategies",
+		"id": "Strategies",
+		"url": "#",
+        "sub-menu": [
+          {
+            "label": "Straddle / Strangle",
+			"url": "#",
+            "sub-menu": [
+              {
+                "label": "Straddle Snapshot",
+                "url": "/opt/StraddleSnapshot.php"
+              },
+              {
+                "label": "Straddle Charts",
+                "url": "/opt/StraddleCharts.php"
+              },
+              {
+                "label": "Straddle Watch",
+                "url": "/opt/StraddleWatch.php"
+              },
+              {
+                "label": "Straddle Charts Plus",
+                "url": "/opt/StraddleChartsPlus.php"
+              },
+              {
+                "label": "Straddle Combo Charts",
+                "url": "/opt/StraddleComboCharts.php"
+              },
+			  {
+				"label": "Multi Straddles - New",
+				"url": "/opt/MultiStraddleCharts.php",
+				"img": "/opt/images/newicon.png"
+			  },
+			  {
+				"label": "Straddle Charts (TradingView)- New",
+				"url": "/opt/StraddleChartsTV_Beta.php",
+				"img": "/opt/images/newicon.png"
+			  },
+			  {
+				"label": "ATM Straddle Chart - New",
+				"url": "/opt/StraddleChartsATM_Beta.php",
+				"img": "/opt/images/newicon.png"
+              }
+            ]
+          },
+          {
+            "label": "Spreads",
+			"url": "#",
+            "sub-menu": [
+              {
+                "label": "Spread Chart",
+                "url": "/opt/SpreadChart.php"
+              },
+			  {
+                "label": "Spread Chart (TradingView)",
+                "url": "/opt/SpreadChart_TV.php",
+				"img": "/opt/images/beta_icon_green_v2.png"
+              }
+            ]
+          },
+          {
+            "label": "Butterfly",
+            "url": "/opt/Butterfly.php"
+          },
+          {
+            "label": "Iron Condor / Iron Fly",
+            "url": "/opt/IronButterfly.php"
+          },
+          {
+            "label": "Double Calendar / Diagonal",
+            "url": "/opt/DoubleCalendar.php"
+          }
+        ]
+      },
+      {
+        "label": "Tools",
+		"id": "Tools",
+		"url": "#",
+        "sub-menu": [
+		{
+            "label": "Old Versions",
+			"url": "#",
+            "sub-menu": [
+              {
+                "label": "Multi Strike OI (Prev)",
+                "url": "/opt/MultiStrikeOI_prev_version.php"
+              },
+              {
+                "label": "Total PE-CE OI Diff (Prev)",
+                "url": "/opt/TotalPECEOIDiff_prev_version.php"
+              },
+              {
+                "label": "Options OI Breakup (Prev)",
+                "url": "/opt/OptionsOIBreakup_prev_version.php"
+              },
+              {
+                "label": "Price vs OI (Prev)",
+                "url": "/opt/PriceVsOI_Old.php"
+              },
+              {
+                "label": "Cumulative OI Change (Prev)",
+                "url": "/opt/CumulativeOIChange_Old.php"
+              },
+              {
+                "label": "OI Breakup (Prev)",
+                "url": "/opt/FuturesOIBreakup_prev_version.php"
+              },
+			  {
+                "label": "Heatmap (Prev)",
+                "url": "/opt/Heatmap_prev_version.php"
+              }
+            ]
+          },
+          {
+            "label": "Portfolio Tracker",
+            "url": "/opt/PortfolioTracker.php",
+            "target": "blank"
+          }
+        ]
+      },
+      {
+        "label": "Live Tools",
+		"id": "LiveTools",
+		"url": "#",
+        "sub-menu": [
+          {
+            "label": "Option Chain",
+            "url": "/opt/OptionChainRT.php",
+            "target": "blank"
+          },
+		  {
+            "label": "FnO Charts (TradingView)",
+            "url": "/opt/FnOChartsRT.php",
+			"img": "/opt/images/beta_icon_green_v2.png",
+            "target": "blank"
+          },
+		  {
+            "label": "Option Trader",
+            "url": "/opt/OptionTrader.php",
+			"img": "/opt/images/beta_icon_green_v2.png",
+            "target": "blank"
+          },
+          {
+            "label": "Price Vs OI",
+            "url": "/opt/PriceVsOIRT.php",
+            "target": "blank"
+          },
+          {
+            "label": "Straddle Charts",
+            "url": "/opt/StraddleChartsRT.php",
+            "target": "blank"
+          },{
+            "label": "Multi Straddle Charts",
+            "url": "/opt/MultiStraddleChartsRT.php",
+			 "img": "/opt/images/newicon.png",
+            "target": "blank"
+          },
+		  {
+            "label": "Price And OI Summary",
+            "url": "/opt/PriceAndOISummaryRT.php",
+            "target": "blank"
+          },
+		  {
+            "label": "Futures Open-High / Open-Low",
+            "url": "/opt/OpenHighLowScanRT.php",
+            "target": "blank"
+          },
+		  {
+            "label": "Futures OI Buildup",
+            "url": "/opt/FuturesOIBuildupRT.php",
+            "target": "blank" 
+          },
+		  {
+            "label": "Option OI Stats",
+            "url": "/opt/OptionOIStatsRT.php",
+            "target": "blank"
+          },
+		  {
+            "label": "API Integration Guide (Upstox)",
+            "url": "/opt/upstox_documentation.php",
+            "target": "blank"
+          },
+		  {
+            "label": "Broker Logout",
+            "url": "/opt/BrokerLogout.php",
+            "target": "blank"
+          }
+
+        ]
+      },
+     
+      {
+        "label": "Help",
+		"id": "Help",
+		"url": "#",
+        "sub-menu": [
+          {
+            "label": "FAQ",
+            "url": "/opt/FAQ.php",
+            "target": "blank"
+          },
+          {
+            "label": "Videos",
+            "url": "https://www.youtube.com/user/IndiaiCharts/videos",
+            "target": "blank"
+          },
+          {
+            "label": "Documentation",
+            "url": "/opt/Documentation.php"
+          },
+          {
+            "label": "Website Updates",
+            "url": "/opt/WebsiteUpdates.php"
+          },
+          {
+            "label": "Disclaimer",
+            "url": "/opt/Disclaimer.php"
+          },
+		  {
+            "label": "Partners",
+            "url": "/opt/Partners.php"
+          },
+			{
+				"id":"telegram",
+				"url": "https://t.me/+Rj-i-hHeuLvY_U65",
+				"label": "Telegram Help",
+				"class": "telegramclassNew"
+			}
+        ]
+      }, 
+
+      {
+        "label": "Profile",
+		"url": "#",
+		"id": "profile-menu",
+        "sub-menu": [
+          {
+            "label": "Manage Symbol Lists",
+            "url": "/opt/ManageSymbolLists.php",
+			"img": "/opt/images/newicon.png"
+            
+          },
+          {
+            "label": "Change Password",
+            "url": "/opt/ChangePassword.php"
+           
+          },
+          {
+            "label": "My Account",
+            "url": "/opt/MyAccount.php"
+           
+          }
+        ]
+      },
+      {
+		"id":"subscription-details",
+        "label": "Subscription Details",
+        "url": "/opt/SubscriptionDetails.php"
+      },
+	  {
+		"id":"Login",
+        "label": "Login",
+		"class": "access",
+        "url": "/opt/login.php"
+      }, 
+	  {
+		"id":"Logout",
+        "label": "Logout",
+		"class": "access",
+        "url": "/opt/logout.php"
+      },
+	  {
+		"id":"renewalNotification",
+        "title": "Subscription Renewal reminder",
+		"class": "notification",
+        "url": "/opt/MyAccount.php"
+      }
+
+	  
+    ]
+  }
+}
