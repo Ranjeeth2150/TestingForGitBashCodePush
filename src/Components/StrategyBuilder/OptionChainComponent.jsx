@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";   
+import React, { useRef,useEffect, useState } from "react";   
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Utility } from '../../utils/Utility'; // Importing the named export
 import { Button } from 'primereact/button';
+import { Badge } from 'primereact/badge';
 
 const OptionChainComponent = ({
     selectedSymbol,
@@ -11,47 +12,59 @@ const OptionChainComponent = ({
     Strikes,
     feedData,
     SpotToken,
-    expiryLisetExpiryListst
+    expiryLisetExpiryListst,
+    setSelectedExpiry,
+    onLTPClick={onLTPClick}
 }) => {
     const [tableData, setTableData] = useState([]);
     const [lastUpdate, setLastUpdate] = useState('');
     const [closestStrike, setClosestStrike] = useState(null);  // To store the closest strike price
     const [expiryList, setExpiryList] = useState(null);
+    const tableRef = useRef(null);  // Reference for the DataTable
+    const [hoveredRow, setHoveredRow] = useState(null); // State to track hovered row
+   
+
     useEffect(() => {
         setTableData([]); // Clear table data
+        
     }, [instrumentKeys]);
+
+
+    
 
     useEffect(() => {
         let expiryList = [];   
         // console.log(expiryLisetExpiryListst.length) 
         for (let i = 0; i < expiryLisetExpiryListst.length; i++) {
-            console.log(expiryLisetExpiryListst[i]["expiry_dates"])
+            // console.log(expiryLisetExpiryListst[i]["expiry_dates"])
 
         let expdt = selectedExpiry.substring(0,7);
         expiryList.push(<button key={"button_" + expiryLisetExpiryListst[i]["expiry_dates"]} 
         
         className= {expdt!=expiryLisetExpiryListst[i]["expiry_dates"].substring(0,7)?'button-above-option-chain':'button-above-option-chain-orange'} 
-        // onClick={(e) => {
+        onClick={(e) => {
               
-        //       expdt = e.target["innerText"];
-        //       e.target['className']='button-above-option-chain-orange';
-        //       this.props.callbackExpiryChange(expdt);
-        //     }
+              expdt = e.target["innerText"];
+              e.target['className']='button-above-option-chain-orange';
+              setSelectedExpiry(expdt); 
+            }
             
-        //     }
+            }
             
-            >{expiryLisetExpiryListst[i]["expiry_dates"]}
-            
-            </button>);
+            >{expiryLisetExpiryListst[i]["expiry_dates"]}</button>);
           }
+          
           setExpiryList(expiryList);
-    },[expiryLisetExpiryListst])
+        
+    },[expiryLisetExpiryListst,selectedExpiry,setSelectedExpiry]);
+    
+
 
     useEffect(() => {
         const util = new Utility();  
 
         if (feedData.length === 0) return;
-        
+       
         let spotPrice = feedData[0].feeds[SpotToken]?.ff?.indexFF?.ltpc?.ltp.toFixed(2);
         let spotTime = feedData[0].feeds[SpotToken]?.ff?.indexFF?.ltpc?.ltt;
         
@@ -73,6 +86,7 @@ const OptionChainComponent = ({
             closest = strikePrice;
         }
     });
+   
     if(closest !== null)
     {
         setClosestStrike(closest);
@@ -82,16 +96,21 @@ const OptionChainComponent = ({
     //     setClosestStrike(closest);  // Store the closest strike price
     // }
 
+    // console.log(closest);
+
         
         setTableData(prevData => {
             let updatedData = [...prevData]; // Preserve previous data
 
-            Object.keys(Strikes).forEach(key => {
+            Object.keys(Strikes).forEach((key, index) => {
                 const ceToken = Strikes[key].ceTokens;
                 const peToken = Strikes[key].peTokens;
 
                 const ceFeed = feedData[0].feeds[ceToken];
                 const peFeed = feedData[0].feeds[peToken];
+
+                if (!ceFeed || !peFeed) return;
+
 
                 const ceLTP = ceFeed?.ff?.marketFF?.ltpc?.ltp || 0;
                 const peLTP = peFeed?.ff?.marketFF?.ltpc?.ltp || 0;
@@ -115,10 +134,13 @@ const OptionChainComponent = ({
                 const peTheta = peFeed?.ff?.marketFF.optionGreeks.theta || 0;
 
                 const existingRowIndex = updatedData.findIndex(row => row.Strike === key.replace('.0000', ''));
+                // console.log(existingRowIndex)
                 if (existingRowIndex !== -1) {
+                    // console.log("u")
                     // Update existing row
                     updatedData[existingRowIndex] = {
                         ...updatedData[existingRowIndex],
+                        id: existingRowIndex, // Set the id to the row index
                         CallTheta: ceTheta !== 0 ? ceTheta : updatedData[existingRowIndex].CallTheta,
                         CallDelta: ceDelta !== 0 ? ceDelta : updatedData[existingRowIndex].CallDelta,  
                         CallIV: ceIV !== 0 ? ((ceIV*100).toFixed(2)) : updatedData[existingRowIndex].CallIV,  
@@ -132,9 +154,16 @@ const OptionChainComponent = ({
                         PutDelta: peDelta !== 0 ? peDelta : updatedData[existingRowIndex].PutDelta,  
                         PutTheta: peTheta !== 0 ? peTheta : updatedData[existingRowIndex].PutTheta,
                     };
+
+                    // After state update, scroll to the closest strike row
+                    
+
+
+    
                 } else {
                     // Add new row
                     updatedData.push({
+                        id: index, // Use index as a unique ID
                         Strike: key.replace('.0000', ''),
                         CallTheta: ceTheta !== 0 ? ceTheta : 0,
                         CallDelta: ceDelta !== 0 ? (ceDelta) : 0,
@@ -149,12 +178,133 @@ const OptionChainComponent = ({
                         PutDelta: peDelta !== 0 ? (peDelta) : 0,
                         PutTheta: peTheta !== 0 ? peTheta : 0,
                     });
+
+                    
                 }
             });
+            
 
+            
+          
             return updatedData;
         });
     }, [feedData, Strikes, SpotToken]);
+
+    useEffect(() => {
+        let tableWrapper = document.querySelector('.optionList .p-datatable-wrapper');
+        let tbody = document.querySelector('.optionList .p-datatable-wrapper .p-datatable-table .p-datatable-tbody');
+    
+        if (tbody && tableWrapper) {
+            let trs = tbody.querySelectorAll('tr');
+            let len = trs.length;
+    
+            // Scroll vertically to the closestStrike row
+            if (len > 40) {
+                for (let i = 0; i < len; i++) {
+                    if (trs[i].innerHTML.includes(closestStrike)) {
+                        trs[i - 6].scrollIntoView();
+                        break;
+                    }
+                }
+            }
+    
+            // Scroll horizontally to the middle column
+            let ths = document.querySelectorAll('.optionList .p-datatable-table thead th');
+            let middleIndex = Math.floor(ths.length / 2);
+            let middleColumn = ths[middleIndex];
+    
+            if (middleColumn) {
+                tableWrapper.scrollLeft = middleColumn.offsetLeft - tableWrapper.clientWidth / 2 + middleColumn.clientWidth / 2;
+            }
+        }
+    
+        // Reset window scroll
+        window.scrollTo(0, 0);
+    }, [instrumentKeys, closestStrike]);
+
+
+     // Custom body template for CallLTP column
+     // Custom body template for CallLTP column
+    const callLTPTemplate = (rowData, row) => {
+        const isHovered = hoveredRow === rowData.Strike; // Check if the current row is hovered
+
+        return (
+            <div
+                style={{ display: 'flex', height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
+                onMouseEnter={() => setHoveredRow(rowData.Strike)} // Set hovered row on mouse enter
+                onMouseLeave={() => setHoveredRow(null)} // Clear hovered row on mouse leave
+            >
+                {isHovered && (
+                    <div style={{  position: 'absolute',  display: 'flex', height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center'  }}>
+                        <button
+                            className='smallGreenButton mr-1 boldText'
+                            // style={{ marginTop: '1px', color: 'white' }}
+                            onClick={() => {
+
+                                onLTPClick(rowData, 'buy','call')
+                                
+                            }}
+                        >
+                            <span>Buy</span>
+                        </button>
+                        <button
+                            className='smallRedButton boldText'
+                            // style={{ marginTop: '1px', color: 'white' }}
+                            onClick={() => {
+                                onLTPClick(rowData, 'sell', 'call')
+                            }}
+                        >
+                            <span>Sell</span>
+                        </button>
+                    </div>
+                )}
+                {rowData.CallLTP}
+            </div>
+        );
+    };
+
+
+
+
+
+    const putLTPTemplate = (rowData, row) => {
+        const isHovered = hoveredRow === rowData.Strike; // Check if the current row is hovered
+
+        return (
+            <div
+                style={{ display: 'flex', height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
+                onMouseEnter={() => setHoveredRow(rowData.Strike)} // Set hovered row on mouse enter
+                onMouseLeave={() => setHoveredRow(null)} // Clear hovered row on mouse leave
+            >
+                {isHovered && (
+                    <div style={{  position: 'absolute',  display: 'flex', height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center'  }}>
+                        <button
+                            className='smallGreenButton mr-1 boldText'
+                            // style={{ marginTop: '1px', color: 'white' }}
+                            onClick={() => {
+
+                                onLTPClick(rowData, 'buy','put')
+                                
+                            }}
+                        >
+                            <span>Buy</span>
+                        </button>
+                        <button
+                            className='smallRedButton boldText'
+                            // style={{ marginTop: '1px', color: 'white' }}
+                            onClick={() => {
+                                onLTPClick(rowData, 'sell', 'put')
+                            }}
+                        >
+                            <span>Sell</span>
+                        </button>
+                    </div>
+                )}
+                {rowData.PutLTP}
+            </div>
+        );
+    };
+
 
     const columns = [ 
         { field:'CallTheta', header: 'Call Theta', style: { minWidth: '133px' }, className: "option", align: "center"  },
@@ -162,8 +312,8 @@ const OptionChainComponent = ({
         { field:'CallIV', header: 'Call IV', style: { minWidth: '133px' }, className: "option", align: "center"  },
         { field: 'CallOIChg', header: 'Call OI Chg', style: { minWidth: '133px' }, className: "option", align: "center"  },
         { field: 'CallOI', header: 'Call OI', style: { minWidth: '133px' }, className: "option", align: "center"  },
-        { field: 'CallLTP', header: 'Call LTP', style: { minWidth: '133px' }, className: "option", align: "center"  },
-        { field: 'Strike', header: 'Strike', className: "option", align: "center", },   
+        { field: 'CallLTP', header: 'Call LTP', style: { minWidth: '133px' }, className: "option", align: "center" },
+        { field: 'Strike', header: 'Strike',style: { minWidth: '10px' }, className: "option", align: "center" },   
         { field: 'PutLTP', header: 'Put LTP', style: { minWidth: '133px' }, className: "option", align: "center"  },
         { field: 'PutOI', header: 'Put OI', style: { minWidth: '133px' }, className: "option", align: "center"  },
         { field: 'PutOIChg', header: 'Put OI Chg', style: { minWidth: '133px' }, className: "option", align: "center"  },
@@ -177,13 +327,71 @@ const OptionChainComponent = ({
         return rowData.Strike == closestStrike ? 'closest-strike' : '';
     };
 
+    
+
+
+   
+
     const flexColumnBodyTemplate = (rowData, column) => {
+        if(column.field === 'CallLTP'){
+            return callLTPTemplate(rowData, column);
+        }
+        else if(column.field === 'PutLTP')
+        {
+            return putLTPTemplate(rowData,column);
+        }
         return (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 {rowData[column.field]}
             </div>
         );
     };
+
+
+    scroll = () => {
+
+        const scrollContainer = document.querySelector(".datebox");
+        const scrollLeftButton = document.querySelector(".scroll-left");
+        const scrollRightButton = document.querySelector(".scroll-right");
+        const scrollStep = 200; // Adjust this value based on your preference
+        const scrollDuration = 500; // Adjust this value for the smooth scrolling duration
+    
+        if ( scrollLeftButton != null ) {
+          scrollLeftButton.addEventListener("click", function() {
+            smoothScroll(scrollContainer, -scrollStep, scrollDuration);
+          });
+        }
+        
+        if ( scrollRightButton != null ) {
+          scrollRightButton.addEventListener("click", function() {
+            smoothScroll(scrollContainer, scrollStep, scrollDuration);
+          });
+      }
+    
+    
+        function smoothScroll(element, amount, duration) {
+    
+          const start = element.scrollLeft;
+          const target = start + amount;
+          const startTime = performance.now();
+    
+          function scrollAnimation(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 0.5 - 0.5 * Math.cos(Math.PI * progress);
+            element.scrollLeft = start + amount * ease;
+    
+            if (progress < 1) {
+              requestAnimationFrame(scrollAnimation);
+            }
+          }
+    
+          requestAnimationFrame(scrollAnimation);
+    
+        }
+    }
+       
+      
     
 
     return (
@@ -205,21 +413,10 @@ const OptionChainComponent = ({
 
 <div className="alignedCenter"></div> 
     <div className="datebox" style={{display:'flex',  marginBottom:'3px', marginTop:'3px' }}>
-          <button className="scroll-left" ><svg width="38" height="32" viewBox="0 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="27" height="27" rx="13.5" transform="matrix(-1 0 0 1 27 2.5)" fill="#EBF5FA"/>
-<path d="M34 16L10 16" stroke="#454A54" strokeWidth="2" strokeLinecap="round"/>
-<path d="M18 24L10 16L18 8" stroke="#454A54" strokeWidth="2" strokeLinecap="round"/>
-</svg>
-
-</button>      
+             
             {expiryList}
 
-            <button className="scroll-right"><svg width="38" height="32" viewBox="0 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="11" y="2.5" width="27" height="27" rx="13.5" fill="#EBF5FA"/>
-<path d="M4 16L28 16" stroke="#454A54" strokeWidth="2" strokeLinecap="round"/>
-<path d="M20 24L28 16L20 8" stroke="#454A54" strokeWidth="2" strokeLinecap="round"/>
-</svg>
-</button>  
+  
           
           </div>
             
@@ -245,6 +442,8 @@ const OptionChainComponent = ({
                             body={(rowData) => flexColumnBodyTemplate(rowData, col)} // Apply custom body template
 
                         />
+
+                        
                     ))}
                 </DataTable>
             </div>

@@ -5,7 +5,7 @@ import bs from "black-scholes"
 import { Utility } from "./Utility"
 import moment from "moment"
 
-import { PLComputeCompoenent } from "../component/StrategyBuilder/PLComputeCompoenent"
+// import { PLComputeCompoenent } from "../component/StrategyBuilder/PLComputeCompoenent"
 
 export class PLCalc {
   // constructor(props: Props) {

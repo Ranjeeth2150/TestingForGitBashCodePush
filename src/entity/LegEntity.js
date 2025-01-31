@@ -1,0 +1,44 @@
+export class LegEntity {
+  Position_Lot;
+  Strike_Price;
+  CE_PE;
+  Buy_Sell;
+  Option_Price;
+  IV;
+  exited;
+  iv_adjustment;
+  Current_PL;
+  Entry_Price;
+  Exit_Price;
+  Expiry;
+  Label;
+  Date;
+  ExpDate;   
+  rowID;
+  indexID;
+  fairPrice;
+  FuturesPrice;
+  spotPrice;
+  futfairPrice;
+  Current_Option_Price;
+  Current_Futures_Price;
+  Current_IV;
+  Strike_flag;
+  enable;
+  delta;
+ prevExpiry;
+ selectedLegListSymbol;
+ id;
+ theta;
+ gamma;
+ vega;
+ legId;
+ todayTraded;
+ remPositonLot;
+ initialLegLot;
+lot_size;
+ // legRowId;
+ combine_Exit_Price;
+ combinedLegs;
+
+}

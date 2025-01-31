@@ -45,6 +45,13 @@
   transition: none;  
 }
 
+.grid .Card-ui .datebox .scroll-left, .grid .Card-ui .datebox .scroll-right {
+  /* position:absolute;
+  display: flex; */
+}
+.datebox{
+  overflow: hidden;
+}
 
 
 
