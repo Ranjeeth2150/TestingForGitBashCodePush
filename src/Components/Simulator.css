@@ -1,0 +1,514 @@
+/* tr button {
+  display: none;
+}
+
+tr:hover button {
+  display: inline-block;
+} */
+
+ .p-datatable-tbody {
+   /* font-size: small; */
+   font-size: 12px;
+ }
+ 
+ .p-datatable .p-datatable-tbody > tr {
+   height: 30px!important;
+   margin: 0px!important;
+   padding: 0px!important;
+ }
+ 
+ .p-datatable .p-datatable-tbody > tr > td {
+   /* height: 20px!important; */
+   margin: 0px!important;
+   padding: 0px!important;
+   /* display: none!important; */
+   width: 50px;
+   border: 1px solid #dee2e6;
+   border-width: 0.3px !important;
+   /* border-width: 0px 5px 0px 0!important; */
+   color: rgba(92, 98, 112, 1);
+ }
+ 
+ /* custom css for legs data */
+ 
+ .p-tabview .p-tabview-panels {
+   padding: 0.25rem!important;
+ }
+ 
+ .p-datatable .p-datatable-thead > tr > th {
+   text-align: center!important;
+   padding: 1rem 0rem!important;
+   width: 60px;
+   font-weight: 600 !important;
+ }
+ 
+ /* .p-datatable .p-datatable-tbody > tr > td {
+   /* border-width: 2px 0px 1px 7px!important; */
+  /* padding: 4px!important;
+   width: 50px;
+ } */
+ 
+ .option {
+   padding: 4px!important;
+   width: 50px; 
+ }
+ 
+ 
+ div[id="selectedList"]>div>div>table>thead {
+   display:none;
+ }
+ 
+ div[id="computePLList"]>div>div>table>thead {
+   display:none;
+ }
+ 
+ body{
+   /* font-size: smaller; */
+   font-size: 12px;
+   /* margin: 3px; */
+ }
+ 
+ .smallText {
+   width : 40px;
+   height: 20px;
+   font-size: smaller;
+   border-radius: 5px 5px 5px 5px;
+   border-color: blue;
+ }
+ .small-size{
+   font-size: smaller;
+ }
+ .optionPriceText {
+   width : 60px;
+   height: 20px;
+   font-size: smaller;
+   border-radius: 2px;
+   border-color: blue;
+ }
+ 
+ .p-datatable-thead {
+   /* font-size:smaller; */
+   font-size: 12px;
+ }
+ .smallGreenButton{
+   width : 50px;
+   height: 25px;
+   margin-left: 2px;
+   margin-right: 2px;
+   background: white;
+   text-align: center;
+   color: green;
+   border-color: green;
+   font-size: smaller;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+ 
+ .smallRedButton{
+   width : 50px;
+   height: 25px;
+   margin-left: 2px;
+   margin-right: 2px;
+   background: white;
+   align-content: center;
+   color: red;
+   border-color: red;
+   border-radius: 5px;
+   font-size:smaller;
+   cursor: pointer;
+ }
+ 
+ .underline{
+   text-decoration: underline;
+ }
+ 
+ .flex-space-between{
+   justify-content: space-between;
+ }
+ 
+ .selected-button-buy{
+   background-color: green;
+   color: white;
+   border-radius: 5px;
+   font-size: smaller;
+   cursor: pointer;
+ }
+ 
+ .selected-button-sell{
+   background-color:red;
+   color: white;
+   border-radius: 5px;
+   font-size: smaller;
+   cursor: pointer;
+ }
+ 
+ .dialog{
+   width: 600px;
+   height: 600px;
+ }
+
+ .dialog2{
+  width: 500px;
+  height: 300px;
+}
+ 
+ .dialogControl{
+   width: 300px;
+   height: 40px;
+   font-size: small;
+   margin-bottom: 5px;
+ }
+ .p-dialog .p-dialog-content {
+   width: 100%;
+ }
+ .secondLine{
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   font-size: small;
+ }
+ 
+ .flex-item {
+   margin: 5px;
+ }
+ 
+ .symbol-dropdown{
+   width: 200px;
+ }
+ 
+ .date-dropdown{
+   width: 150px;
+ }
+ 
+ .line-break {
+   width: 100%;
+ }
+ 
+ .smallButton{
+ padding: 5px!important;
+ font-size: small;
+ font-weight: bold;
+ }
+ 
+ .p-component{
+   font-size: small;
+ }
+ 
+ .symbol-dropdown .p-inputtext{
+   font-size: small!important;
+   height: 30px!important;
+   vertical-align: middle!important;
+   padding: 7px!important;  
+ }
+ .date-dropdown .p-inputtext{
+   font-size: small!important;
+   height: 30px!important;
+   vertical-align: middle!important;
+   padding: 7px!important;  
+ }
+ 
+ .p-dropdown-items{
+ font-size: small;
+ }
+ 
+ .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+   background: #6366F1!important;
+   border-color: #6366F1!important;
+   color: white!important;
+   height: 30px!important;
+  
+ }
+ 
+ .p-tabview .p-tabview-nav li .p-tabview-nav-link{
+   height: 40px;
+   margin-bottom: 0cm!important;
+ }
+ 
+ .slidecontainer {
+   width: 100%;
+ }
+ 
+ .p-datatable-scrollable .p-datatable-thead>tr>th {
+   display:table-row!important;
+ }
+ 
+ 
+ 
+ .p-tabview-ink-bar {
+   z-index: 0!important;
+ }
+ 
+ 
+ /*
+ .p-datatable .p-datatable-tbody > tr {
+   display:table-row!important;
+ } */
+ 
+ .optionList .p-datatable-wrapper .p-datatable-table .p-datatable-tbody td:nth-child(1) {
+   width: 20px;
+ }
+ 
+ .strategyList .p-datatable-wrapper .p-datatable-table .p-datatable-tbody tr:hover {
+   cursor: pointer;
+ }
+ 
+ .strategyList  .p-datatable-wrapper .p-datatable-table .p-datatable-thead > tr > th:nth-child(2) {
+   flex-grow: 2;
+  padding-right: 4em;
+ } 
+ /* .strategyList  .p-datatable-wrapper .p-datatable-table .p-datatable-thead > tr > th:nth-child(3) {
+  padding-right: 1em;
+  padding-left: .8em;
+ } 
+ .strategyList .p-datatable-wrapper .p-datatable-table .p-datatable-tbody tr>td:nth-child(2) {
+     flex-grow: 2;
+ } */
+ .hideComponent{
+   display: none;
+ }
+ .showComponent{
+   display: block;
+ }
+ 
+ .alignedLeft {
+   text-align: left; 
+   background:#d0e1fd;
+   font-weight:bold;
+   color:black;
+   font-size:small;
+   /* display: flex!important; */
+   align-items: center;
+   cursor: pointer
+ }
+ 
+ .alignedCenter {
+   text-align: center; 
+   background:#d0e1fd;
+   font-weight:bold;
+   color:black;
+   font-size:small;
+   align-items: center;
+   cursor: pointer;
+   justify-content: center;
+   margin-top:-8px; 
+   margin-left:-8px; 
+   margin-right:-8px;
+   display: flex;
+ }
+ 
+ .borderClass{
+   border-style:'ridge';
+   border-color: #d0e1fd;
+ }
+ 
+ .redClass{
+   color: red;
+ }
+ 
+ .leglot-dropdown .p-inputtext{
+   font-size: small!important;
+   height: 30px!important;
+   vertical-align: middle!important;
+   padding: 7px!important;
+   margin: -4px;  
+ }
+ 
+ .otm{
+   background-color: #FFFF00;
+ }
+ .p-inputnumber-button {
+   width: 20px!important;
+ }
+ .p-fluid .p-inputtext{
+   font-size: small!important;
+ }
+ .button-above-option-chain{
+   font-size:small;
+   border-radius:13px; 
+   border-bottom-style:none; 
+   border-top-style:none;
+   border-left-style:none;
+   border-right-style:none;
+   cursor:pointer; 
+ }
+ .button-above-option-chain-orange{
+   font-size:small;
+   border-radius:13px; 
+   border-bottom-style:none; 
+   border-top-style:none;
+   border-left-style:none;
+   border-right-style:none;
+   cursor:pointer; 
+   background-color:orange;
+ }
+ /* .clicked{
+   background-color:orange;
+ } */
+ 
+ 
+ /* button:hover{background-color:orange;}
+ 
+ button:focus{background-color:orange;}  */
+ 
+ /* a {
+   color: orange;
+ } */
+ 
+ /* a.button{
+   color:green;
+  
+   text-decoration: none;
+ } 
+ */
+ /* a:visited {
+   background-color:orange;
+ } */
+ 
+ /* button:active {
+   background-color:orange;
+ }   */
+ 
+ 
+ 
+ tr:hover .action_button {
+   opacity: 1;
+   color: #999;
+   }  
+ 
+   /* .action_button_container {
+       padding: 0 !important;
+   }
+ 
+   .action_button:last-child {
+       text-align: left !important;
+   }
+ 
+   .action_button {
+       padding: 9px 4px !important;
+       display: flex;
+       justify-content: space-evenly;
+   }
+ 
+   .action_button {
+       border-left: 0;
+       border-right: 0;
+   } */
+ 
+    .action_button  {
+       opacity: 0;
+       color: #999;
+   } 
+ 
+   /* .action_button button {
+       position: relative;
+       width: 18px;
+       height: 18px;
+       background: #fff;
+       border: 1px solid;
+       border-radius: 4px;
+       font-size: 12px;
+       cursor: pointer !important;
+   } */
+ 
+ 
+   .mr-1 {
+       margin-right: 0.25rem!important;
+   }
+ 
+   /* dates scrolling css starts */
+ 
+    .datebox {
+     padding: 15px 50px;
+     overflow: hidden;
+   }
+   
+    .datebox button {
+     /* background-color: white; */
+     border: 0px;
+     outline: 0;
+   }
+   
+   .datebox .scroll-left {
+     position: absolute;
+     left: -6px;
+     background: lightsteelblue;
+   }
+   
+   .datebox .scroll-right {
+     position: absolute;
+     right: 58.5%;
+     background: lightsteelblue;
+   }
+
+   .dialog {
+    height: 415px!important;
+   }
+
+   .dialog2 {
+    height: 250px!important;
+   }
+   
+   .datebox button {
+     padding: 0px;
+     margin: 0px;
+     display: inline-block;
+     white-space: nowrap;
+   }
+   
+   .datebox button .active {
+     /* color: #3092c0 !important; */
+     background: #d5f1ff;
+   }
+   
+   .datebox button  {
+     /* background: #e8e8e8; */
+     padding: 1px 6px;
+     /* border-radius: 5px; */
+     margin: 0px 10px;
+     list-style: none;
+     display: inline-block;
+   }
+ 
+   .p-dropdown .p-dropdown-trigger {
+     width: 2rem !important;
+   }
+ 
+   .p-dropdown-items .divider {
+     height: 1px;
+     margin: 9px 0;
+     overflow: hidden;
+     background-color: #e5e5e5;
+   }
+ 
+   .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+     padding-right: 0.75rem !important;
+     margin-right: -2.75rem !important;
+   }
+ 
+   .p-dropdown-panel .p-dropdown-header {
+     padding: 0.75rem 0.25rem !important;
+   }
+
+  .p-badge-sell {
+    background: red !important;
+
+  }
+
+  .p-badge.p-badge-success {
+      background-color: #3e7954 !important;
+  }
+
+  .p-badge {
+    /* background: green !important; */
+    color: #ffffff !important;
+    font-size: 0.75rem !important;
+    font-weight: bold !important;
+    min-width: -1rem !important;
+    height: 0.5rem !important;
+    line-height: 0.5rem !important;
+  }
+
+  .p-datatable-tfoot{
+    /* Add border-top after tbody */
+    border-top: 1px solid #dee2e6;
+}

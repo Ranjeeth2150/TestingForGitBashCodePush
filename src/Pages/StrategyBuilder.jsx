@@ -8,6 +8,7 @@ import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import 'primereact/resources/themes/bootstrap4-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeflex/primeflex.min.css';
+import '../Main.css';
 import '../Components/StrategyBuilder/StrategyBuilder.css';
 import OptionChainComponent from '../Components/StrategyBuilder/OptionChainComponent';
 // import { getUrl, decodeProtobuf } from "../Components/socket/socketUtils.js";
@@ -67,10 +68,12 @@ const StrategyBuilder = () => {
   const [expiryLisetExpiryListst, setExpiryList] = useState([]);  // Store the expiry list
   const [selectedExpiry, setSelectedExpiry] = useState(null);
   const [instrumentKeys,setInstrumentKeys] = useState([]);
+  const [SpotToken,setSpotToken] = useState([]);
   const [Strikes, setStrikes] = useState([]);
   const [ceTokens, setCeTokens] = useState([]);
   const [peTokens, setPeTokens] = useState([]);
   const wsRef = useRef(null); // WebSocket reference
+  // console.log(expiryLisetExpiryListst)
   // console.log(feedData)
   // // Fetch the token and symbols initially
   // const fetchTokenAndSymbols = async () => {
@@ -255,6 +258,8 @@ const StrategyBuilder = () => {
          setStrikes(instrumentKeysResponse.formattedStrikes || []); 
          setCeTokens(instrumentKeysResponse.CE_Tokens || []);
          setPeTokens(instrumentKeysResponse.PE_Tokens || []); 
+         setSpotToken (instrumentKeysResponse.SpotToken_upstox || null);
+        //  console.log(SpotToken)
        } catch (error) {
          console.error("Error fetching instrument keys:", error);
        }
@@ -328,13 +333,20 @@ const StrategyBuilder = () => {
    
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      <div style={{ width: "40%", padding: "10px" }}>
+    <div className="grid p-fluid">
+    <div>
+      {/* {this.state.isBusy ? <CircleSpinnerOverlay loading={true} overlayColor="rgba(0,153,255,0.2)" /> : null} */}
+    </div>
+    {/* <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}> */}
+    <div className='shadow-r width-46'>
         <div className="Card-ui">
-          <div className="flex-in-tab">
-            <div className="left-side-part" style={{ justifyContent: 'left' }}>
-              <div className="symbol-dropdown">
+        <div className="flex-in-tab">
+                <div className="right-side-part" style={{ justifyContent: 'left' }}>
+                  <div className="side-part">
+                    <div className="right-side">
+                      <div className="symbol-dropdown">
                 <Dropdown
+                  style={{ width: '170px', padding: '4px !important' }}
                   value={selectedSymbol}
                   options={categorizedOptions}
                   optionLabel="label"
@@ -363,10 +375,12 @@ const StrategyBuilder = () => {
                 </NavLink>
               </div>
             </div>
+            </div>
             
           </div>
-          <div className="flex-in-tab">
-          <div className='left-side-part-lower'>
+         <div className='line-ui hide-in-web'></div></div>
+          {/* <div className="flex-in-tab">
+          <div className='left-side-part-lower'> */}
               
           <OptionChainComponent         selectedSymbol={selectedSymbol}
         selectedExpiry={selectedExpiry}
@@ -375,17 +389,20 @@ const StrategyBuilder = () => {
         // ceTokens={ceTokens}
         // peTokens={peTokens}
         feedData={feedData}
+        SpotToken = {SpotToken}
+        expiryLisetExpiryListst ={expiryLisetExpiryListst}
 />
        
 
             </div>
             </div>
-        </div>
-      </div>
-      <div style={{ width: "60%", padding: "10px" }}>
+        {/* </div>
+      </div> */}
+        <div className='pad width-54'>
         {/* Add additional content */}
       </div>
     </div>
+   
   );
 };
 
