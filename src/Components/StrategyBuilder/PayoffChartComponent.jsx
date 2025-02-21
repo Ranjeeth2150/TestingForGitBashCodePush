@@ -2,20 +2,30 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const PayoffChartComponent = () => {
+const PayoffChartComponent = (payoffchartdata) => {
+  if(payoffchartdata.payoffchartdata === undefined) return;
+  payoffchartdata = payoffchartdata.payoffchartdata;
+  // console.log(payoffchartdata)
+  
   // Sample data for the chart
   const sampleData = {
     chartData: {
-      xAxis: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100], // X-axis values
-      series1: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50], // First series (T+0)
-      series2: [50, 45, 40, 35, 30, 25, 20, 15, 10, 5], // Second series (Expiry)
+      xAxis:payoffchartdata[0] , // X-axis values
+      series1:payoffchartdata[1], // First series (T+0)
+      series2: payoffchartdata[2], // Second series (Expiry)
+
+      
     },
-    selectedsymbol: "Sample Chart",
-    fairPrice: 50, // Fair price for plot lines
+
+
+    
+    selectedsymbol: "Payyoffchart",
+    fairPrice: payoffchartdata[4]['fairprice'], // Fair price for plot lines
   };
 
   // Prepare data for the chart
   const xAxisData = sampleData.chartData.xAxis;
+  
   const arr1 = xAxisData.map((x, i) => [x, sampleData.chartData.series1[i]]); // T+0 data
   const arr2 = xAxisData.map((x, i) => [x, sampleData.chartData.series2[i]]); // Expiry data
 
